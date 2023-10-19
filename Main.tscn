@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjk1ipeu4frya"]
+
+[ext_resource type="Texture2D" uid="uid://d1tqa0sk2oh4u" path="res://TilesetsAndBackgrounds/spr_Sky_strip.png" id="1_4nlvq"]
+[ext_resource type="TileSet" uid="uid://c0tf1ns30yi8i" path="res://VillageTiles.tres" id="2_8jluc"]
+[ext_resource type="Texture2D" uid="uid://gfh2na24phav" path="res://TilesetsAndBackgrounds/spr_VillageOneWayTileSetNoBkg_strip.png" id="3_uh425"]
+[ext_resource type="PackedScene" uid="uid://bla6pj6jo5dbo" path="res://Player.tscn" id="5_enhrt"]
+
+[node name="Main" type="Sprite2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(240, 136)
+texture = ExtResource("1_4nlvq")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_8jluc")
+format = 2
+layer_0/tile_data = PackedInt32Array(262149, 1, 0, 262151, 65537, 0, 262153, 131073, 0, 589825, 1, 0, 589827, 65537, 0, 589829, 131073, 0, 589831, 1, 0, 589833, 65537, 0, 589835, 131073, 0, 589837, 1, 0, 589839, 65537, 0, 589841, 131073, 0, 589843, 1, 0, 589845, 65537, 0, 589847, 131073, 0)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(88, 304)
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("3_uh425")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(88, 304)
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("3_uh425")
+
+[node name="Player" parent="." instance=ExtResource("5_enhrt")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
