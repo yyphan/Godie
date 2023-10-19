@@ -35,3 +35,8 @@ texture = ExtResource("3_uh425")
 [node name="Player" parent="." instance=ExtResource("5_enhrt")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "嗨嗨嗨"
