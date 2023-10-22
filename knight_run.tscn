@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://2rwgowqhkym0"]
+
+[ext_resource type="Texture2D" uid="uid://dxhjvkxjtklfj" path="res://Characters/Knight/noBKG_KnightRun_strip.png" id="1_nyufn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tfh6"]
+atlas = ExtResource("1_nyufn")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70eks"]
+atlas = ExtResource("1_nyufn")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7n4a"]
+atlas = ExtResource("1_nyufn")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjh3n"]
+atlas = ExtResource("1_nyufn")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak4dw"]
+atlas = ExtResource("1_nyufn")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rua0b"]
+atlas = ExtResource("1_nyufn")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2o2i"]
+atlas = ExtResource("1_nyufn")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ut0f"]
+atlas = ExtResource("1_nyufn")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycm5v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tfh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70eks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7n4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjh3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak4dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rua0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2o2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ut0f")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 16.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n53ha"]
+height = 28.0
+
+[node name="knight run" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4, 5)
+sprite_frames = SubResource("SpriteFrames_ycm5v")
+animation = &"new_animation"
+frame_progress = 0.975655
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_n53ha")
