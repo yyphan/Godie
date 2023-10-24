@@ -1,13 +1,6 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-
 @export_group("Running")
 @export var _max_speed: int = 100
 ## Set to true to ignore accelerations and always move at Max Speed
@@ -27,16 +20,22 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var _midair_turn_speed: int = 70; 
 
 
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
+@export_group("Jumping")
+@export var _jump_height: float = 100
+## Scales the gravity when going up (in the jump), e.g. set to 2 would be two times the normal gravity
+@export var _upward_gravity_multiplier: float = 1
+## Scales the gravity when falling down (in the jump), e.g. set to 2 would be two times the normal gravity
+@export var _downward_gravity_multiplier: float = 1
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+
+func _physics_process(delta):
+	
 	velocity.x = handle_running(delta, velocity.x, is_on_floor())
+	velocity.y = handle_jumping(delta, velocity.y, is_on_floor())
 	
 	move_and_slide()
 
@@ -62,3 +61,12 @@ func handle_running(delta_time: float, current_velocity_x: float, is_on_ground: 
 		delta_speed = deceleration * delta_time
 		
 	return move_toward(current_velocity_x, target_velocity_x, delta_speed)
+
+
+# Get jump input and update vertical velocity 
+func handle_jumping(delta_time: float, current_velocity_y: float, is_on_ground: bool) -> float:
+	if !is_on_ground:  # falling
+		return current_velocity_y + gravity * delta_time
+	elif Input.is_action_pressed("jump"):  # do a jump
+		return current_velocity_y - sqrt(2 * _jump_height * gravity)  # highschool physics
+	return current_velocity_y
