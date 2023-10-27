@@ -27,10 +27,9 @@ extends CharacterBody2D
 ## Scales the gravity when falling down (in the jump), e.g. set to 2 would be two times the normal gravity
 @export var _downward_gravity_multiplier: float = 1
 
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+var _base_gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var _cur_gravity: float = _base_gravity
 
 func _physics_process(delta):
 	
@@ -65,8 +64,19 @@ func handle_running(delta_time: float, current_velocity_x: float, is_on_ground: 
 
 # Get jump input and update vertical velocity 
 func handle_jumping(delta_time: float, current_velocity_y: float, is_on_ground: bool) -> float:
-	if !is_on_ground:  # falling
-		return current_velocity_y + gravity * delta_time
-	elif Input.is_action_pressed("jump"):  # do a jump
-		return current_velocity_y - sqrt(2 * _jump_height * gravity)  # highschool physics
-	return current_velocity_y
+	calculate_gravity(current_velocity_y)
+	if Input.is_action_just_pressed("jump"):
+		return current_velocity_y - sqrt(2 * _jump_height * _cur_gravity)
+	return apply_gravity(delta_time, current_velocity_y)
+	
+
+func apply_gravity(delta_time: float, current_velocity_y: float) -> float:
+	return current_velocity_y + _cur_gravity * delta_time
+		
+
+# Adjust gravity when jumping up and falling down
+func calculate_gravity(current_velocity_y: float):
+	if current_velocity_y > 0.01:  # falling down
+		_cur_gravity = _base_gravity * _downward_gravity_multiplier
+	else:  # jumping up
+		_cur_gravity = _base_gravity * _upward_gravity_multiplier
