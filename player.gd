@@ -35,6 +35,7 @@ extends CharacterBody2D
 var _base_gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 # Coyote time starts counting when character falls off a platform
 var _coyote_time_counter: float = 0
+var _is_jumping = false
 # Jump buffer starts counting when player hits jump but chracter is still mid air
 var _is_jump_buffer_counting = false
 var _jump_buffer_counter: float = 0
@@ -78,7 +79,9 @@ func handle_jumping(delta_time: float, current_velocity_y: float, is_on_ground: 
 	handle_jump_buffer_counting(delta_time, is_on_ground)
 		
 	if Input.is_action_just_pressed("jump"):
-		if can_jump(is_on_ground):
+		if is_on_ground:
+			_desire_jump = true
+		elif can_cayote_jump():
 			_desire_jump = true
 		else:  # start counting jump buffer
 			_jump_buffer_counter = 0
@@ -86,6 +89,7 @@ func handle_jumping(delta_time: float, current_velocity_y: float, is_on_ground: 
 	
 	if _desire_jump:  
 		_desire_jump = false
+		_is_jumping = true
 		var jump_force: float = sqrt(2 * _jump_height * calculate_gravity(current_velocity_y))
 		# Make jump during coyote time (mid air) feels just as strong as jumping from the ground
 		if current_velocity_y > 0:  
@@ -108,13 +112,14 @@ func calculate_gravity(current_velocity_y: float):
 		return _base_gravity * _upward_gravity_multiplier
 
 
-# Can jump either on platform, or just falling off platform 
-func can_jump(is_on_ground: bool) -> bool:
-	return is_on_ground or _coyote_time_counter < _coyote_time_seconds
+# Can jump after just falling off platform 
+func can_cayote_jump() -> bool:
+	return _coyote_time_counter < _coyote_time_seconds and !_is_jumping
 
 
 func handle_coyote_time_counting(delta_time: float, is_on_ground: bool):
 	if is_on_ground:
+		_is_jumping = false
 		_coyote_time_counter = 0
 	elif _coyote_time_counter < _coyote_time_seconds + delta_time:
 		_coyote_time_counter += delta_time
