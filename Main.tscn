@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bla6pj6jo5dbo" path="res://Player.tscn" id="5_enhrt"]
 
 [node name="Main" type="Sprite2D"]
+position = Vector2(1, -3)
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(240, 136)
@@ -35,10 +36,13 @@ texture = ExtResource("3_uh425")
 [node name="Player" parent="." instance=ExtResource("5_enhrt")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, 4)
 
 [node name="Sprint 1" type="RichTextLabel" parent="."]
-offset_right = 1056.0
-offset_bottom = 224.0
+offset_left = -1210.0
+offset_top = -166.0
+offset_right = -228.0
+offset_bottom = 55.0
 text = "1. animation - characters
 	a. doc: https://docs.godotengine.org/en/stable/tutorials/2d/2d_sprite_animation.html#sprite-sheet-with-animatedsprite2d
 	b. reference: Player.tscn
