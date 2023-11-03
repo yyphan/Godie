@@ -42,7 +42,7 @@ position = Vector2(0, 4)
 offset_left = -1210.0
 offset_top = -166.0
 offset_right = -228.0
-offset_bottom = 55.0
+offset_bottom = 147.0
 text = "1. animation - characters
 	a. doc: https://docs.godotengine.org/en/stable/tutorials/2d/2d_sprite_animation.html#sprite-sheet-with-animatedsprite2d
 	b. reference: Player.tscn
@@ -50,5 +50,8 @@ text = "1. animation - characters
 	a. doc-tileset: https://docs.godotengine.org/en/stable/tutorials/2d/using_tilesets.html
 	b. doc-tilemap: https://docs.godotengine.org/en/stable/tutorials/2d/using_tilemaps.html
 	c. reference: Main.tscn/TileMap
-3. player movement - yyf 
-4. R&D - how player can have 1, 2 or 3-hit attacks"
+3. player movement - give value
+4. R&D - how player can have 1, 2 or 3-hit attacks
+5. Camera follow - yyf
+6. R&D - hitbox and animation
+"
