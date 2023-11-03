@@ -48,7 +48,13 @@ func _physics_process(delta):
 	velocity.y = apply_gravity(delta, velocity.y)
 	
 	move_and_slide()
-
+	
+	if velocity.x != 0:
+		$AnimatedSprite2D.play("Run")
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+	
+	else :
+		$AnimatedSprite2D.play("Idle")
 
 # Get horizontal input direction and return velocity after acceleration/turn/deceleration.
 func handle_running(delta_time: float, current_velocity_x: float, is_on_ground: bool) -> float:
