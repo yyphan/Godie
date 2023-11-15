@@ -710,7 +710,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rcdmm")
 }],
-"loop": true,
+"loop": false,
 "name": &"Shield",
 "speed": 10.0
 }]
@@ -725,4 +725,4 @@ shape = SubResource("CapsuleShape2D_ds0lm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(15, 24)
 sprite_frames = SubResource("SpriteFrames_oyhpr")
-animation = &"Run"
+animation = &"Shield"
