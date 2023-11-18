@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://crv82sednpgx3"]
+
+[ext_resource type="Texture2D" uid="uid://clt0p0c85th2u" path="res://任务板/noteBG.png" id="1_cdxto"]
+
+[node name="StickerNote" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(152, 96)
+scale = Vector2(0.3, 0.18)
+texture = ExtResource("1_cdxto")
+
+[node name="Text" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 280.0
+offset_bottom = 160.0
+focus_mode = 2
+text = "What now?
+"
+selection_enabled = true

@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3 uid="uid://doea3x31hg04m"]
+
+[ext_resource type="PackedScene" uid="uid://crv82sednpgx3" path="res://任务板/StickerNote.tscn" id="1_hxdat"]
+[ext_resource type="Script" path="res://任务板/任务板.gd" id="1_sqnsb"]
+[ext_resource type="Texture2D" uid="uid://b43da5yafn8ek" path="res://任务板/任务板背景.png" id="2_4fnvc"]
+
+[node name="任务板" type="Node2D"]
+position = Vector2(-16, 8)
+script = ExtResource("1_sqnsb")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(864, 592)
+texture = ExtResource("2_4fnvc")
+
+[node name="StickerNote" parent="." instance=ExtResource("1_hxdat")]
+position = Vector2(48, 72)
+
+[node name="Text" parent="StickerNote" index="1"]
+text = "Demo参考
+
+https://img.itch.zone/aW1hZ2UvNTEwMTIxLzI2NDgxOTkuZ2lm/347x500/pXxopy.gifhttps://img.itch.zone/aW1hZ2UvNTEwMTIxLzI2NDgxOTkuZ2lm/347x500/pXxopy.gif"
+
+[node name="StickerNote2" parent="." instance=ExtResource("1_hxdat")]
+position = Vector2(744, 72)
+
+[node name="Text" parent="StickerNote2" index="1"]
+text = "Camera Follow
+
+- YYF
+- branch name: camera-follow
+"
+
+[node name="StickerNote3" parent="." instance=ExtResource("1_hxdat")]
+position = Vector2(392, 64)
+
+[node name="Text" parent="StickerNote3" index="1"]
+text = "赋予Player数值
+
+- 包括跑和跳
+
+"
+
+[node name="StickerNote5" parent="." instance=ExtResource("1_hxdat")]
+position = Vector2(392, 256)
+
+[node name="Text" parent="StickerNote5" index="1"]
+text = "完成Tilemap
+
+- 至少要有demo里用到的tile
+
+"
+
+[node name="StickerNote6" parent="." instance=ExtResource("1_hxdat")]
+position = Vector2(392, 448)
+
+[node name="Text" parent="StickerNote6" index="1"]
+text = "完成Player动画:
+
+-包括attack, roll, jump/fall
+
+"
+
+[node name="StickerNote7" parent="." instance=ExtResource("1_hxdat")]
+position = Vector2(56, 464)
+
+[node name="Text" parent="StickerNote7" index="1"]
+text = "制作敌人 - wolf
+
+- 动画: run, idle, attack, death
+- 代码: 散步/仇恨/攻击之间的切换
+
+"
+
+[node name="StickerNote8" parent="." instance=ExtResource("1_hxdat")]
+position = Vector2(56, 656)
+
+[node name="Text" parent="StickerNote8" index="1"]
+text = "场景
+
+- 需要tilemap
+- 填充前景和背景
+- 多重背景 - 不同的移动速度
+
+"
+
+[node name="StickerNote4" parent="." instance=ExtResource("1_hxdat")]
+position = Vector2(48, 272)
+
+[node name="Text" parent="StickerNote4" index="1"]
+text = "R&D
+
+1. 1-hit, 2-hit, 3-hit attacks?
+2. 伤害判定？
+"
+
+[editable path="StickerNote"]
+[editable path="StickerNote2"]
+[editable path="StickerNote3"]
+[editable path="StickerNote5"]
+[editable path="StickerNote6"]
+[editable path="StickerNote7"]
+[editable path="StickerNote8"]
+[editable path="StickerNote4"]
