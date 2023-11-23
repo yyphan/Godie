@@ -18,7 +18,7 @@ position = Vector2(48, 72)
 [node name="Text" parent="StickerNote" index="1"]
 text = "Demo参考
 
-https://img.itch.zone/aW1hZ2UvNTEwMTIxLzI2NDgxOTkuZ2lm/347x500/pXxopy.gifhttps://img.itch.zone/aW1hZ2UvNTEwMTIxLzI2NDgxOTkuZ2lm/347x500/pXxopy.gif"
+https://oco.itch.io/medieval-fantasy-village-outskirts-tileset"
 
 [node name="StickerNote2" parent="." instance=ExtResource("1_hxdat")]
 position = Vector2(744, 72)
@@ -31,17 +31,19 @@ text = "Camera Follow
 "
 
 [node name="StickerNote3" parent="." instance=ExtResource("1_hxdat")]
-position = Vector2(392, 64)
+position = Vector2(744, 536)
 
 [node name="Text" parent="StickerNote3" index="1"]
 text = "赋予Player数值
 
 - 包括跑和跳
 
+why
+
 "
 
 [node name="StickerNote5" parent="." instance=ExtResource("1_hxdat")]
-position = Vector2(392, 256)
+position = Vector2(384, 72)
 
 [node name="Text" parent="StickerNote5" index="1"]
 text = "完成Tilemap
@@ -49,30 +51,45 @@ text = "完成Tilemap
 - 至少要有demo里用到的tile
 
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="StickerNote6" parent="." instance=ExtResource("1_hxdat")]
-position = Vector2(392, 448)
+position = Vector2(744, 256)
 
 [node name="Text" parent="StickerNote6" index="1"]
-text = "完成Player动画:
+text = "连接Player动画:
 
 -包括attack, roll, jump/fall
 
+gsb
+
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="StickerNote7" parent="." instance=ExtResource("1_hxdat")]
-position = Vector2(56, 464)
+position = Vector2(1080, 72)
 
 [node name="Text" parent="StickerNote7" index="1"]
 text = "制作敌人 - wolf
 
-- 动画: run, idle, attack, death
 - 代码: 散步/仇恨/攻击之间的切换
 
+ldl
+"
+
+[node name="StickerNote10" parent="." instance=ExtResource("1_hxdat")]
+position = Vector2(1120, 160)
+
+[node name="Text" parent="StickerNote10" index="1"]
+text = "制作敌人 - wolf
+
+- 动画: run, idle, attack, death
+
+ldl
 "
 
 [node name="StickerNote8" parent="." instance=ExtResource("1_hxdat")]
-position = Vector2(56, 656)
+position = Vector2(40, 472)
 
 [node name="Text" parent="StickerNote8" index="1"]
 text = "场景
@@ -93,11 +110,22 @@ text = "R&D
 2. 伤害判定？
 "
 
+[node name="StickerNote9" parent="." instance=ExtResource("1_hxdat")]
+position = Vector2(792, 344)
+
+[node name="Text" parent="StickerNote9" index="1"]
+text = "看一遍现有的代码
+
+yyf
+"
+
 [editable path="StickerNote"]
 [editable path="StickerNote2"]
 [editable path="StickerNote3"]
 [editable path="StickerNote5"]
 [editable path="StickerNote6"]
 [editable path="StickerNote7"]
+[editable path="StickerNote10"]
 [editable path="StickerNote8"]
 [editable path="StickerNote4"]
+[editable path="StickerNote9"]
