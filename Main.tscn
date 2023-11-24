@@ -37,18 +37,3 @@ texture = ExtResource("3_uh425")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 4)
-
-[node name="Sprint 1" type="RichTextLabel" parent="."]
-offset_left = -1210.0
-offset_top = -166.0
-offset_right = -228.0
-offset_bottom = 55.0
-text = "1. animation - characters
-	a. doc: https://docs.godotengine.org/en/stable/tutorials/2d/2d_sprite_animation.html#sprite-sheet-with-animatedsprite2d
-	b. reference: Player.tscn
-2. background - tilemap
-	a. doc-tileset: https://docs.godotengine.org/en/stable/tutorials/2d/using_tilesets.html
-	b. doc-tilemap: https://docs.godotengine.org/en/stable/tutorials/2d/using_tilemaps.html
-	c. reference: Main.tscn/TileMap
-3. player movement - yyf 
-4. R&D - how player can have 1, 2 or 3-hit attacks"
