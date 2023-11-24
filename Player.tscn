@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://bla6pj6jo5dbo"]
+[gd_scene load_steps=108 format=3 uid="uid://bla6pj6jo5dbo"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_kw5p8"]
 [ext_resource type="Texture2D" uid="uid://b0ywx0jsfbq2c" path="res://Characters/Knight/noBKG_KnightAttack_strip.png" id="1_wf68p"]
@@ -715,6 +715,14 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_cdsxh"]
+resource_name = "run"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uxt43"]
+_data = {
+"run": SubResource("Animation_cdsxh")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kw5p8")
 
@@ -726,3 +734,10 @@ shape = SubResource("CapsuleShape2D_ds0lm")
 position = Vector2(15, 24)
 sprite_frames = SubResource("SpriteFrames_oyhpr")
 animation = &"Run"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uxt43")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
