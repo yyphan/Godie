@@ -49,15 +49,7 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	if velocity.x != 0:
-		$AnimatedSprite2D.play("Run")
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif Input.is_action_pressed("shield"):
-		$AnimatedSprite2D.play("Shield")
-	else :
-		$AnimatedSprite2D.play("Idle")
-    
-    
+	
 # Get horizontal input direction and return velocity after acceleration/turn/deceleration.
 func handle_running(delta_time: float, current_velocity_x: float, is_on_ground: bool) -> float:
 	var direction: float = Input.get_axis("move_left", "move_right")  # ranges between -1 and 1
