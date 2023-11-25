@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://bla6pj6jo5dbo"]
+[gd_scene load_steps=108 format=3 uid="uid://bla6pj6jo5dbo"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_kw5p8"]
 [ext_resource type="Texture2D" uid="uid://b0ywx0jsfbq2c" path="res://Characters/Knight/noBKG_KnightAttack_strip.png" id="1_wf68p"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cawauwjch4nei" path="res://Characters/Knight/noBKG_KnightRoll_strip.png" id="6_5gfsc"]
 [ext_resource type="Texture2D" uid="uid://dxhjvkxjtklfj" path="res://Characters/Knight/noBKG_KnightRun_strip.png" id="6_kei8s"]
 [ext_resource type="Texture2D" uid="uid://c1tf16yhhj4cp" path="res://Characters/Knight/noBKG_KnightShield_strip.png" id="8_vr1wj"]
+[ext_resource type="Script" path="res://MovementController.gd" id="9_3upux"]
+[ext_resource type="Script" path="res://JumpController.gd" id="10_jlyq3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ds0lm"]
 height = 34.0
@@ -726,3 +728,9 @@ shape = SubResource("CapsuleShape2D_ds0lm")
 position = Vector2(15, 24)
 sprite_frames = SubResource("SpriteFrames_oyhpr")
 animation = &"Run"
+
+[node name="MovementController" type="Node" parent="."]
+script = ExtResource("9_3upux")
+
+[node name="JumpController" type="Node" parent="."]
+script = ExtResource("10_jlyq3")
