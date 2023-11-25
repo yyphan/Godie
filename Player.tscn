@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://bla6pj6jo5dbo"]
+[gd_scene load_steps=133 format=3 uid="uid://bla6pj6jo5dbo"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_kw5p8"]
 [ext_resource type="Texture2D" uid="uid://b0ywx0jsfbq2c" path="res://Characters/Knight/noBKG_KnightAttack_strip.png" id="1_wf68p"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dxhjvkxjtklfj" path="res://Characters/Knight/noBKG_KnightRun_strip.png" id="6_kei8s"]
 [ext_resource type="Texture2D" uid="uid://c1tf16yhhj4cp" path="res://Characters/Knight/noBKG_KnightShield_strip.png" id="8_vr1wj"]
 [ext_resource type="Script" path="res://PlayerSprite.gd" id="9_0uk4f"]
+[ext_resource type="Script" path="res://AnimationController.gd" id="10_kjmp6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ds0lm"]
 height = 34.0
@@ -718,7 +719,6 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_aqgr2"]
 length = 1.46667
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -886,7 +886,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_mg4rm"]
 length = 0.7
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -923,39 +922,81 @@ _data = {
 "Shield": SubResource("Animation_mg4rm")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n643y"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_newh0"]
+animation = &"Death"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cs24q"]
 animation = &"Idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7vham"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c4otb"]
+animation = &"Roll"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_snyun"]
 animation = &"Run"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n40fg"]
-animation = &"Run"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_pyce0"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_7vham")
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_n40fg")
-blend_point_1/pos = 1.0
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lyblp"]
+animation = &"Shield"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lv8uk"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ma540"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rhddq"]
 advance_mode = 2
-advance_expression = "velocity.x != 0"
+advance_expression = "is_running()
+"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6dtpf"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2mhs2"]
 advance_mode = 2
-advance_expression = "velocity.x == 0"
+advance_expression = "!is_running()
+"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qjjrs"]
+advance_mode = 2
+advance_expression = "is_attack_just_pressed()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jadtr"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wg2l1"]
+advance_mode = 2
+advance_expression = "is_shield_just_pressed()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2iehm"]
+advance_mode = 2
+advance_expression = "is_shield_just_released()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yjqoh"]
+advance_mode = 2
+advance_expression = "is_shield_just_pressed()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gjhd6"]
+advance_mode = 2
+advance_expression = "is_attack_just_pressed()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p3a2m"]
+advance_mode = 2
+advance_expression = "is_attack_just_pressed()"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8wrjb"]
+states/Attack/node = SubResource("AnimationNodeAnimation_n643y")
+states/Attack/position = Vector2(510, 213)
+states/Death/node = SubResource("AnimationNodeAnimation_newh0")
+states/Death/position = Vector2(900, 213)
 states/Idle/node = SubResource("AnimationNodeAnimation_cs24q")
 states/Idle/position = Vector2(310, 100)
-states/Run/node = SubResource("AnimationNodeBlendSpace1D_pyce0")
-states/Run/position = Vector2(490, 100)
+states/Roll/node = SubResource("AnimationNodeAnimation_c4otb")
+states/Roll/position = Vector2(900, 157)
+states/Run/node = SubResource("AnimationNodeAnimation_snyun")
+states/Run/position = Vector2(685, 100)
+states/Shield/node = SubResource("AnimationNodeAnimation_lyblp")
+states/Shield/position = Vector2(510, -13)
 states/Start/position = Vector2(197, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_lv8uk"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_ma540"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_6dtpf")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_lv8uk"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_rhddq"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_2mhs2"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_qjjrs"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_jadtr"), "Idle", "Shield", SubResource("AnimationNodeStateMachineTransition_wg2l1"), "Shield", "Idle", SubResource("AnimationNodeStateMachineTransition_2iehm"), "Run", "Shield", SubResource("AnimationNodeStateMachineTransition_yjqoh"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_gjhd6"), "Shield", "Attack", SubResource("AnimationNodeStateMachineTransition_p3a2m")]
+graph_offset = Vector2(-78, -58)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kw5p8")
@@ -968,7 +1009,7 @@ shape = SubResource("CapsuleShape2D_ds0lm")
 position = Vector2(15, 24)
 sprite_frames = SubResource("SpriteFrames_oyhpr")
 animation = &"Idle"
-frame = 13
+frame = 5
 script = ExtResource("9_0uk4f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -979,6 +1020,8 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_8wrjb")
 anim_player = NodePath("../AnimationPlayer")
-advance_expression_base_node = NodePath("..")
+advance_expression_base_node = NodePath("../AnimationController")
 active = true
-parameters/Run/blend_position = -1.0
+
+[node name="AnimationController" type="Node" parent="."]
+script = ExtResource("10_kjmp6")

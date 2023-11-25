@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name Player
 
 @export_group("Running")
 @export var _max_speed: int = 100
@@ -133,3 +134,4 @@ func handle_jump_buffer_counting(delta_time: float, is_on_ground: bool):
 		_is_jump_buffer_counting = false
 	elif _is_jump_buffer_counting && _jump_buffer_counter < _jump_buffer_seconds + delta_time:
 		_jump_buffer_counter += delta_time
+		
