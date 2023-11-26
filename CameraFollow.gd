@@ -22,7 +22,7 @@ func _ready():
 
 
 func _process(delta):
-	var looking_dir = -1 if player.get_node("AnimatedSprite2D").flip_h else 1
+	var looking_dir = -1 if player.get_node("PlayerSprite").flip_h else 1
 	var target_x: float = player.get_position().x + _look_ahead * looking_dir
 	var target_y: float = player.get_position().y + _offset_y
 	var camera_moving_vector = Vector2(target_x, target_y) - get_position()
