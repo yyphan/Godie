@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjk1ipeu4frya"]
+[gd_scene load_steps=6 format=3 uid="uid://cjk1ipeu4frya"]
 
 [ext_resource type="Texture2D" uid="uid://d1tqa0sk2oh4u" path="res://TilesetsAndBackgrounds/spr_Sky_strip.png" id="1_4nlvq"]
 [ext_resource type="TileSet" uid="uid://c0tf1ns30yi8i" path="res://VillageTiles.tres" id="2_8jluc"]
 [ext_resource type="Texture2D" uid="uid://gfh2na24phav" path="res://TilesetsAndBackgrounds/spr_VillageOneWayTileSetNoBkg_strip.png" id="3_uh425"]
+[ext_resource type="Script" path="res://CameraFollow.gd" id="4_rfvok"]
 [ext_resource type="PackedScene" uid="uid://bla6pj6jo5dbo" path="res://Player.tscn" id="5_enhrt"]
 
 [node name="Main" type="Sprite2D"]
@@ -33,7 +34,8 @@ motion_scale = Vector2(0.2, 0.2)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource("3_uh425")
 
-[node name="Player" parent="." instance=ExtResource("5_enhrt")]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 4)
+script = ExtResource("4_rfvok")
+
+[node name="Player" parent="." instance=ExtResource("5_enhrt")]
