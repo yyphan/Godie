@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://AnimationController.gd" id="10_kjmp6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ds0lm"]
-height = 34.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5uit"]
 atlas = ExtResource("1_wf68p")
@@ -859,7 +858,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_66c1o"]
-length = 0.8
+length = 0.80001
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1004,14 +1003,14 @@ graph_offset = Vector2(-78, -58)
 script = ExtResource("1_kw5p8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(17, 22)
+position = Vector2(17, 21)
+rotation = -0.000375774
 shape = SubResource("CapsuleShape2D_ds0lm")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(15, 24)
 sprite_frames = SubResource("SpriteFrames_oyhpr")
-animation = &"Idle"
-frame = 2
+animation = &"Run"
 script = ExtResource("9_0uk4f")
 
 [node name="MovementController" type="Node" parent="."]
