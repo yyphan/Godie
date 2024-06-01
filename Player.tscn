@@ -1011,14 +1011,22 @@ shape = SubResource("CapsuleShape2D_ds0lm")
 position = Vector2(15, 24)
 sprite_frames = SubResource("SpriteFrames_oyhpr")
 animation = &"Idle"
-frame = 9
+frame = 2
 script = ExtResource("9_0uk4f")
 
 [node name="MovementController" type="Node" parent="."]
 script = ExtResource("9_3upux")
+_acceleration = 200
+_midair_acceleration = 200
+_deceleration = 1000
+_midair_deceleration = 200
+_turn_speed = 2000
+_midair_turn_speed = 200
 
 [node name="JumpController" type="Node" parent="."]
 script = ExtResource("10_jlyq3")
+_jump_height = 40.0
+_downward_gravity_multiplier = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1026,9 +1034,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_uxt43")
-}
 tree_root = SubResource("AnimationNodeStateMachine_8wrjb")
 advance_expression_base_node = NodePath("../AnimationController")
 anim_player = NodePath("../AnimationPlayer")

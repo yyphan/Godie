@@ -37,5 +37,6 @@ texture = ExtResource("3_uh425")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 4)
 script = ExtResource("4_rfvok")
+_look_ahead = 50
 
 [node name="Player" parent="." instance=ExtResource("5_enhrt")]
