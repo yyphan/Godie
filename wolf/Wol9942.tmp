@@ -1,0 +1,140 @@
+[gd_scene load_steps=19 format=3 uid="uid://dk4sat1rjqaq4"]
+
+[ext_resource type="Script" path="res://wolf/wolf.gd" id="1_x1sj7"]
+[ext_resource type="Texture2D" uid="uid://bjn7oyh448ug6" path="res://Characters/Wolf/noBKG_WolfRun_strip.png" id="2_la5it"]
+[ext_resource type="Script" path="res://wolf/WolfSprite.gd" id="3_gypa0"]
+[ext_resource type="Script" path="res://wolf/EnemyMovementController.gd" id="3_tp7cl"]
+[ext_resource type="Script" path="res://wolf/EnemyAnimationController.gd" id="5_43ctt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p21i5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16lfb"]
+atlas = ExtResource("2_la5it")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqw7b"]
+atlas = ExtResource("2_la5it")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqmr6"]
+atlas = ExtResource("2_la5it")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jri0l"]
+atlas = ExtResource("2_la5it")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guuty"]
+atlas = ExtResource("2_la5it")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kka60"]
+atlas = ExtResource("2_la5it")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h7ma"]
+atlas = ExtResource("2_la5it")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4d8h"]
+atlas = ExtResource("2_la5it")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5lwmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16lfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqw7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqmr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jri0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guuty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kka60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h7ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4d8h")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_qxtir"]
+resource_name = "Run"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bsse"]
+_data = {
+"Run": SubResource("Animation_qxtir")
+}
+
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_ycslc"]
+
+[node name="Wolf" type="CharacterBody2D"]
+script = ExtResource("1_x1sj7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(19, 23)
+shape = SubResource("CapsuleShape2D_p21i5")
+
+[node name="WolfSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(17, 26)
+scale = Vector2(0.578125, 0.546875)
+sprite_frames = SubResource("SpriteFrames_5lwmk")
+animation = &"Run"
+autoplay = "Run"
+frame_progress = 0.808372
+script = ExtResource("3_gypa0")
+
+[node name="EnemyMovementController" type="Node" parent="."]
+script = ExtResource("3_tp7cl")
+
+[node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../WolfSprite")
+libraries = {
+"": SubResource("AnimationLibrary_1bsse")
+}
+
+[node name="EnemyAnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../WolfSprite")
+tree_root = SubResource("AnimationRootNode_ycslc")
+anim_player = NodePath("../EnemyAnimationPlayer")
+
+[node name="EnemyAnimationController" type="Node" parent="."]
+script = ExtResource("5_43ctt")

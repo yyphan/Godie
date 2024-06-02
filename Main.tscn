@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjk1ipeu4frya"]
+[gd_scene load_steps=7 format=3 uid="uid://cjk1ipeu4frya"]
 
 [ext_resource type="Texture2D" uid="uid://d1tqa0sk2oh4u" path="res://TilesetsAndBackgrounds/spr_Sky_strip.png" id="1_4nlvq"]
-[ext_resource type="TileSet" uid="uid://c0tf1ns30yi8i" path="res://VillageTiles.tres" id="2_8jluc"]
+[ext_resource type="TileSet" uid="uid://c0tf1ns30yi8i" path="res://TilesetsAndBackgrounds/VillageTiles.tres" id="2_8jluc"]
 [ext_resource type="Texture2D" uid="uid://gfh2na24phav" path="res://TilesetsAndBackgrounds/spr_VillageOneWayTileSetNoBkg_strip.png" id="3_uh425"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="4_rfvok"]
-[ext_resource type="PackedScene" uid="uid://bla6pj6jo5dbo" path="res://Player.tscn" id="5_enhrt"]
+[ext_resource type="PackedScene" uid="uid://bla6pj6jo5dbo" path="res://player/Player.tscn" id="5_enhrt"]
+[ext_resource type="PackedScene" uid="uid://dk4sat1rjqaq4" path="res://wolf/Wolf.tscn" id="6_g3rdn"]
 
 [node name="Main" type="Sprite2D"]
 position = Vector2(1, -3)
@@ -40,3 +41,6 @@ script = ExtResource("4_rfvok")
 _look_ahead = 50
 
 [node name="Player" parent="." instance=ExtResource("5_enhrt")]
+
+[node name="Wolf" parent="." instance=ExtResource("6_g3rdn")]
+position = Vector2(239, 99)

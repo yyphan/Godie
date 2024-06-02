@@ -1,6 +1,6 @@
 [gd_scene load_steps=135 format=3 uid="uid://bla6pj6jo5dbo"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_kw5p8"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_kw5p8"]
 [ext_resource type="Texture2D" uid="uid://b0ywx0jsfbq2c" path="res://Characters/Knight/noBKG_KnightAttack_strip.png" id="1_wf68p"]
 [ext_resource type="Texture2D" uid="uid://ba2wkcwrya12n" path="res://Characters/Knight/noBKG_KnightDeath_strip.png" id="3_m5am3"]
 [ext_resource type="Texture2D" uid="uid://8dsiw6s10pbl" path="res://Characters/Knight/noBKG_KnightIdle_strip.png" id="4_x4jr6"]
@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://cawauwjch4nei" path="res://Characters/Knight/noBKG_KnightRoll_strip.png" id="6_5gfsc"]
 [ext_resource type="Texture2D" uid="uid://dxhjvkxjtklfj" path="res://Characters/Knight/noBKG_KnightRun_strip.png" id="6_kei8s"]
 [ext_resource type="Texture2D" uid="uid://c1tf16yhhj4cp" path="res://Characters/Knight/noBKG_KnightShield_strip.png" id="8_vr1wj"]
-[ext_resource type="Script" path="res://PlayerSprite.gd" id="9_0uk4f"]
-[ext_resource type="Script" path="res://MovementController.gd" id="9_3upux"]
-[ext_resource type="Script" path="res://JumpController.gd" id="10_jlyq3"]
-[ext_resource type="Script" path="res://AnimationController.gd" id="10_kjmp6"]
+[ext_resource type="Script" path="res://player/PlayerSprite.gd" id="9_0uk4f"]
+[ext_resource type="Script" path="res://player/MovementController.gd" id="9_3upux"]
+[ext_resource type="Script" path="res://player/JumpController.gd" id="10_jlyq3"]
+[ext_resource type="Script" path="res://player/AnimationController.gd" id="10_kjmp6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ds0lm"]
 height = 34.0
@@ -1010,8 +1010,8 @@ shape = SubResource("CapsuleShape2D_ds0lm")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(15, 24)
 sprite_frames = SubResource("SpriteFrames_oyhpr")
-animation = &"Idle"
-frame = 2
+animation = &"Death"
+frame_progress = 0.518599
 script = ExtResource("9_0uk4f")
 
 [node name="MovementController" type="Node" parent="."]
