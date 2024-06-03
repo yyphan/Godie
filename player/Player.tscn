@@ -1010,8 +1010,7 @@ shape = SubResource("CapsuleShape2D_ds0lm")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(15, 24)
 sprite_frames = SubResource("SpriteFrames_oyhpr")
-animation = &"Death"
-frame_progress = 0.518599
+animation = &"Idle"
 script = ExtResource("9_0uk4f")
 
 [node name="MovementController" type="Node" parent="."]
