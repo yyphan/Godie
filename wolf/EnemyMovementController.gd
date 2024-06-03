@@ -9,14 +9,12 @@ var direction: bool
 func handle_running(delta_time: float, is_on_ground: bool) :
 	if abs(player.position.x-wolf.position.x) < 150:
 		return sign(player.position.x-wolf.position.x)*_speed
+	#处理wandering边界，距离足够就开始追击player
 	else: 
 		var randomSpeed = randi_range(-50, 50)
 		#var time = get_tree().create_timer(0.5)
 		#await time.timeout
-		if randomSpeed < 0:
-			return sign(player.position.x-wolf.position.x)*randomSpeed
-		else:
-			return sign(player.position.x-wolf.position.x)*randomSpeed*-1
+		return randomSpeed
 
 	
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjk1ipeu4frya"]
+[gd_scene load_steps=8 format=3 uid="uid://cjk1ipeu4frya"]
 
 [ext_resource type="Texture2D" uid="uid://d1tqa0sk2oh4u" path="res://TilesetsAndBackgrounds/spr_Sky_strip.png" id="1_4nlvq"]
 [ext_resource type="TileSet" uid="uid://c0tf1ns30yi8i" path="res://TilesetsAndBackgrounds/VillageTiles.tres" id="2_8jluc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://CameraFollow.gd" id="4_rfvok"]
 [ext_resource type="PackedScene" uid="uid://bla6pj6jo5dbo" path="res://player/Player.tscn" id="5_enhrt"]
 [ext_resource type="PackedScene" uid="uid://dk4sat1rjqaq4" path="res://wolf/Wolf.tscn" id="6_g3rdn"]
+[ext_resource type="Script" path="res://Timer.gd" id="7_ahag0"]
 
 [node name="Main" type="Sprite2D"]
 position = Vector2(1, -3)
@@ -44,3 +45,8 @@ _look_ahead = 50
 
 [node name="Wolf" parent="." instance=ExtResource("6_g3rdn")]
 position = Vector2(239, 99)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+script = ExtResource("7_ahag0")
