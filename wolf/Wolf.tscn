@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dk4sat1rjqaq4"]
+[gd_scene load_steps=41 format=3 uid="uid://dk4sat1rjqaq4"]
 
 [ext_resource type="Script" path="res://wolf/wolf.gd" id="1_x1sj7"]
 [ext_resource type="Texture2D" uid="uid://bjn7oyh448ug6" path="res://Characters/Wolf/noBKG_WolfRun_strip.png" id="2_la5it"]
@@ -10,38 +10,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p21i5"]
 radius = 17.0
 height = 46.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_16lfb"]
-atlas = ExtResource("2_la5it")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aqw7b"]
-atlas = ExtResource("2_la5it")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqmr6"]
-atlas = ExtResource("2_la5it")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jri0l"]
-atlas = ExtResource("2_la5it")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_guuty"]
-atlas = ExtResource("2_la5it")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kka60"]
-atlas = ExtResource("2_la5it")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2h7ma"]
-atlas = ExtResource("2_la5it")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d4d8h"]
-atlas = ExtResource("2_la5it")
-region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4u50"]
 atlas = ExtResource("3_qddct")
@@ -115,37 +83,40 @@ region = Rect2(1024, 0, 64, 64)
 atlas = ExtResource("3_qddct")
 region = Rect2(1088, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_16lfb"]
+atlas = ExtResource("2_la5it")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqw7b"]
+atlas = ExtResource("2_la5it")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqmr6"]
+atlas = ExtResource("2_la5it")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jri0l"]
+atlas = ExtResource("2_la5it")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guuty"]
+atlas = ExtResource("2_la5it")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kka60"]
+atlas = ExtResource("2_la5it")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h7ma"]
+atlas = ExtResource("2_la5it")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4d8h"]
+atlas = ExtResource("2_la5it")
+region = Rect2(448, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5lwmk"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_16lfb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aqw7b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rqmr6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jri0l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_guuty")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kka60")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2h7ma")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d4d8h")
-}],
-"loop": true,
-"name": &"Run",
-"speed": 10.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t4u50")
@@ -202,12 +173,42 @@ animations = [{
 "texture": SubResource("AtlasTexture_twhut")
 }],
 "loop": true,
-"name": &"death",
-"speed": 5.0
+"name": &"Death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16lfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqw7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqmr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jri0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guuty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kka60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h7ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4d8h")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_qxtir"]
-resource_name = "Run"
+[sub_resource type="Animation" id="Animation_xkwtn"]
+length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -215,10 +216,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": []
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -227,14 +228,15 @@ tracks/1/path = NodePath(".:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": ["Run"]
 }
 
-[sub_resource type="Animation" id="Animation_yh8sn"]
-resource_name = "Death"
+[sub_resource type="Animation" id="Animation_5oofn"]
+length = 1.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -242,10 +244,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": []
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -254,19 +256,28 @@ tracks/1/path = NodePath(".:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": ["Death"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1bsse"]
 _data = {
-"Death": SubResource("Animation_yh8sn"),
-"Run": SubResource("Animation_qxtir")
+"Death": SubResource("Animation_5oofn"),
+"Run": SubResource("Animation_xkwtn")
 }
 
-[sub_resource type="AnimationRootNode" id="AnimationRootNode_ycslc"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y3875"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nnf7a"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hvtug"]
+states/Run/node = SubResource("AnimationNodeAnimation_y3875")
+states/Run/position = Vector2(317, 100)
+transitions = ["Start", "Run", SubResource("AnimationNodeStateMachineTransition_nnf7a")]
 
 [node name="Wolf" type="CharacterBody2D"]
 script = ExtResource("1_x1sj7")
@@ -276,12 +287,12 @@ position = Vector2(19, 23)
 shape = SubResource("CapsuleShape2D_p21i5")
 
 [node name="WolfSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(15.0781, 35.5156)
+position = Vector2(17, 36)
 scale = Vector2(1.09131, 0.952637)
 sprite_frames = SubResource("SpriteFrames_5lwmk")
 animation = &"Run"
 autoplay = "Run"
-frame_progress = 0.331426
+frame_progress = 0.660818
 script = ExtResource("3_gypa0")
 
 [node name="EnemyMovementController" type="Node" parent="."]
@@ -295,7 +306,7 @@ libraries = {
 
 [node name="EnemyAnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../WolfSprite")
-tree_root = SubResource("AnimationRootNode_ycslc")
+tree_root = SubResource("AnimationNodeStateMachine_hvtug")
 anim_player = NodePath("../EnemyAnimationPlayer")
 
 [node name="EnemyAnimationController" type="Node" parent="."]
