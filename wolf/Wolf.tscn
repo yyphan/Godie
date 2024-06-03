@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dk4sat1rjqaq4"]
+[gd_scene load_steps=42 format=3 uid="uid://dk4sat1rjqaq4"]
 
 [ext_resource type="Script" path="res://wolf/wolf.gd" id="1_x1sj7"]
 [ext_resource type="Texture2D" uid="uid://bjn7oyh448ug6" path="res://Characters/Wolf/noBKG_WolfRun_strip.png" id="2_la5it"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxhx6uawan35y" path="res://Characters/Wolf/noBKG_WolfDeath_strip.png" id="3_qddct"]
 [ext_resource type="Script" path="res://wolf/EnemyMovementController.gd" id="3_tp7cl"]
 [ext_resource type="Script" path="res://wolf/EnemyAnimationController.gd" id="5_43ctt"]
+[ext_resource type="Script" path="res://wolf/Timer.gd" id="7_vqavt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p21i5"]
 radius = 17.0
@@ -206,34 +207,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_xkwtn"]
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["Run"]
-}
-
 [sub_resource type="Animation" id="Animation_5oofn"]
 length = 1.8
 loop_mode = 1
@@ -262,6 +235,34 @@ tracks/1/keys = {
 "values": ["Death"]
 }
 
+[sub_resource type="Animation" id="Animation_xkwtn"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Run"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1bsse"]
 _data = {
 "Death": SubResource("Animation_5oofn"),
@@ -285,18 +286,23 @@ script = ExtResource("1_x1sj7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(19, 23)
 shape = SubResource("CapsuleShape2D_p21i5")
+one_way_collision = true
 
 [node name="WolfSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(17, 36)
 scale = Vector2(1.09131, 0.952637)
 sprite_frames = SubResource("SpriteFrames_5lwmk")
-animation = &"Run"
+animation = &"Death"
 autoplay = "Run"
-frame_progress = 0.660818
 script = ExtResource("3_gypa0")
 
 [node name="EnemyMovementController" type="Node" parent="."]
 script = ExtResource("3_tp7cl")
+
+[node name="Timer" type="Timer" parent="EnemyMovementController"]
+wait_time = 2.0
+autostart = true
+script = ExtResource("7_vqavt")
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../WolfSprite")
