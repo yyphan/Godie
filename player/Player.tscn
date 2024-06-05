@@ -1011,7 +1011,7 @@ shape = SubResource("CapsuleShape2D_ds0lm")
 position = Vector2(15, 24)
 sprite_frames = SubResource("SpriteFrames_oyhpr")
 animation = &"Idle"
-frame = 11
+frame = 1
 script = ExtResource("9_0uk4f")
 
 [node name="MovementController" type="Node" parent="."]
