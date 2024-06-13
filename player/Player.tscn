@@ -515,7 +515,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n77fg")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -565,7 +565,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_abqhd")
 }],
-"loop": true,
+"loop": false,
 "name": &"Idle",
 "speed": 10.0
 }, {
@@ -1001,6 +1001,8 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-78, -58)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 11
 script = ExtResource("1_kw5p8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1011,7 +1013,7 @@ shape = SubResource("CapsuleShape2D_ds0lm")
 position = Vector2(15, 24)
 sprite_frames = SubResource("SpriteFrames_oyhpr")
 animation = &"Idle"
-frame = 1
+frame = 6
 script = ExtResource("9_0uk4f")
 
 [node name="MovementController" type="Node" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjk1ipeu4frya"]
+[gd_scene load_steps=9 format=3 uid="uid://cjk1ipeu4frya"]
 
 [ext_resource type="Texture2D" uid="uid://d1tqa0sk2oh4u" path="res://TilesetsAndBackgrounds/spr_Sky_strip.png" id="1_4nlvq"]
 [ext_resource type="Script" path="res://Main.gd" id="1_022oj"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://gfh2na24phav" path="res://TilesetsAndBackgrounds/spr_VillageOneWayTileSetNoBkg_strip.png" id="3_uh425"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="4_rfvok"]
 [ext_resource type="PackedScene" uid="uid://bla6pj6jo5dbo" path="res://player/Player.tscn" id="5_enhrt"]
-[ext_resource type="PackedScene" uid="uid://dk4sat1rjqaq4" path="res://wolf/Wolf.tscn" id="6_g3rdn"]
+[ext_resource type="PackedScene" uid="uid://dk4sat1rjqaq4" path="res://enemy/wolf/Wolf.tscn" id="6_g3rdn"]
+[ext_resource type="Script" path="res://EnemyHub.gd" id="7_msyst"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(1, -3)
@@ -45,16 +46,17 @@ motion_scale = Vector2(0.2, 0.2)
 position = Vector2(-117, 155)
 texture = ExtResource("3_uh425")
 
-[node name="Player" parent="." instance=ExtResource("5_enhrt")]
-position = Vector2(-237, -130)
-collision_layer = 4
-collision_mask = 7
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("5_enhrt")]
+position = Vector2(-214, -88)
 
-[node name="Wolf" parent="." instance=ExtResource("6_g3rdn")]
-position = Vector2(34, -44)
+[node name="EnemyHub" type="Node2D" parent="."]
+script = ExtResource("7_msyst")
+
+[node name="Wolf" parent="EnemyHub" instance=ExtResource("6_g3rdn")]
+position = Vector2(46, -56)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="EnemyHub" method="_on_timer_timeout"]
