@@ -23,3 +23,8 @@ func Physics_Update(delta: float):
 		Transitioned.emit(self,"Attack")
 		
 	enemy.velocity.x = sign(player.position.x - enemy.position.x) * move_speed
+
+
+func _on_hurt_area_area_entered(area):
+	print("由追击状态进入受击状态")
+	Transitioned.emit(self,"Hurt")

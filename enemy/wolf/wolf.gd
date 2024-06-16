@@ -4,6 +4,7 @@ class_name Wolf
 
 #is_collided判断玩家敌人是否接触，接触后敌人才判断开始攻击
 @export var is_collided: bool = false
+@export var hitDamage = 2
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var _base_gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -16,14 +17,18 @@ func _physics_process(delta):
 	#print($WolfStateMachine.current_state.name)
 	if($WolfStateMachine.is_state("Idle")):
 		#根据位移方向决定towards
-		$WolfSprite.flip_h = self.velocity.x < 0;
+		$WolfSprite.flip_h = self.velocity.x < 0
+		
 	elif($WolfStateMachine.is_state("Attack")):
-		#攻击期间不转头
-		pass
+		$WolfSprite.flip_h = ((self.position.x - player.position.x) > 0)
+		if($WolfSprite.flip_h):
+			$HitArea.scale.x = -1
+		else:
+			$HitArea.scale.x = 1
+		#攻击期间不转头，hitArea根据面朝进行翻转
+		
 	elif($WolfStateMachine.is_state("Chase")):
 		#追逐期间转头
 		$WolfSprite.flip_h = (self.position.x - player.position.x) > 0
 		
-
-
 

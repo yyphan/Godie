@@ -16,3 +16,8 @@ func Physics_Update(delta: float):
 func _on_enemy_animation_tree_animation_finished(Attack):
 	print("结束攻击动作")
 	Transitioned.emit(self,"Idle")
+
+
+func _on_hurt_area_area_entered(area):
+	print("由攻击状态进入受击状态")
+	Transitioned.emit(self,"Hurt")

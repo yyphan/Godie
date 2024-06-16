@@ -40,3 +40,8 @@ func Physics_Update(delta: float):
 	if enemy: #初始状态，需判断enemy是否为空
 		enemy.velocity.x = move_direction * move_speed
 
+
+
+func _on_hurt_area_area_entered(area):
+	print("由闲逛状态进入受击状态")
+	Transitioned.emit(self,"Hurt")
