@@ -56,3 +56,11 @@ attack={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+[layer_names]
+
+2d_physics/layer_1="background"
+2d_physics/layer_2="object"
+2d_physics/layer_3="player"
+2d_physics/layer_4="enemy"
+2d_physics/layer_5="hit_by_enemy"
+2d_physics/layer_6="hit_by_player"
