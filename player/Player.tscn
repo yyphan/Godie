@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://player/AnimationController.gd" id="10_kjmp6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ds0lm"]
-height = 34.0
+height = 28.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5uit"]
 atlas = ExtResource("1_wf68p")
@@ -789,6 +789,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true, false, true, false, true]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"set_state"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_1drx7"]
 length = 3.0
@@ -816,6 +830,47 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["Death"]
+}
+
+[sub_resource type="Animation" id="Animation_ql6q1"]
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Hurt"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"set_state"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_vjeax"]
@@ -957,33 +1012,6 @@ tracks/1/keys = {
 "values": ["Shield"]
 }
 
-[sub_resource type="Animation" id="Animation_ql6q1"]
-length = 1.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerSprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["Hurt"]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uxt43"]
 _data = {
 "Attack": SubResource("Animation_aqgr2"),
@@ -1032,7 +1060,7 @@ advance_expression = "!is_running()
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qjjrs"]
 advance_mode = 2
-advance_expression = "is_attack_just_pressed()"
+advance_expression = "is_attacking()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jadtr"]
 switch_mode = 2
@@ -1040,19 +1068,19 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wg2l1"]
 advance_mode = 2
-advance_expression = "is_shield_just_pressed()"
+advance_expression = "is_holding_shield()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2iehm"]
 advance_mode = 2
-advance_expression = "is_shield_just_released()"
+advance_expression = "!is_holding_shield()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yjqoh"]
 advance_mode = 2
-advance_expression = "is_shield_just_pressed()"
+advance_expression = "is_holding_shield()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gjhd6"]
 advance_mode = 2
-advance_expression = "is_attack_just_pressed()"
+advance_expression = "is_attacking()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p3a2m"]
 advance_mode = 2
@@ -1091,7 +1119,7 @@ states/Shield/node = SubResource("AnimationNodeAnimation_lyblp")
 states/Shield/position = Vector2(510, -13)
 states/Start/position = Vector2(197, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_lv8uk"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_rhddq"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_2mhs2"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_qjjrs"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_jadtr"), "Idle", "Shield", SubResource("AnimationNodeStateMachineTransition_wg2l1"), "Shield", "Idle", SubResource("AnimationNodeStateMachineTransition_2iehm"), "Run", "Shield", SubResource("AnimationNodeStateMachineTransition_yjqoh"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_gjhd6"), "Shield", "Attack", SubResource("AnimationNodeStateMachineTransition_p3a2m"), "Hurt", "Idle", SubResource("AnimationNodeStateMachineTransition_8t1p6"), "Idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_4yus1"), "Run", "Hurt", SubResource("AnimationNodeStateMachineTransition_s5q0c"), "Attack", "Hurt", SubResource("AnimationNodeStateMachineTransition_y1vu5")]
-graph_offset = Vector2(-78, -58)
+graph_offset = Vector2(-78, -59.8824)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tatme"]
 
@@ -1111,7 +1139,8 @@ shape = SubResource("CapsuleShape2D_ds0lm")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(15, 24)
 sprite_frames = SubResource("SpriteFrames_oyhpr")
-animation = &"Attack"
+animation = &"Idle"
+frame = 6
 script = ExtResource("9_0uk4f")
 
 [node name="MovementController" type="Node" parent="."]
